@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esports Teams Directory (Vue.js)</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Vue.js CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Esports Teams Directory</h1>
+            <input type="text" id="searchInput" v-model="searchQuery" placeholder="Search for a team...">
+        </header>
+        <main>
+            <!-- Iterate over groups that have matching teams -->
+            <section v-for="(teams, groupName) in filteredGroupsData" :key="groupName" class="group">
+                <h2>☄ GROUP {{ groupName.toUpperCase() }} ☄</h2>
+                <div class="team-list">
+                    <!-- Iterate over teams within the current filtered group -->
+                    <div v-for="(team, index) in teams" :key="index" class="team-card">
+                        <h3>{{ team.name }}</h3>
+                        <p>Email: <span>{{ team.email }}</span></p>
+                        <p>Username: <span>{{ team.username }}</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Message displayed if no teams are found across all groups after searching -->
+            <p v-if="Object.keys(filteredGroupsData).length === 0 && searchQuery" class="no-results no-results-overall">
+                No teams found matching your search criteria.
+            </p>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
