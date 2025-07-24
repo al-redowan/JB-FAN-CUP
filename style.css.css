@@ -3,28 +3,117 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif; /* Apply Poppins font */
-    background-color: #f4f9ff; /* A slightly different light background */
+    font-family: 'Poppins', sans-serif; /* Apply Poppins font for a modern look */
+    background-color: #f4f9ff; /* A light, clean background color */
 }
 
-/* Example override: Adjusting the header background gradient slightly */
-.uk-background-primary {
-    background: linear-gradient(135deg, #2c3e50 0%, #1a2a3a 100%); /* UIkit's default primary is good, but we can customize */
+/* Header Customization */
+.uk-background-primary { /* UIkit's primary background class */
+    background: linear-gradient(135deg, #2c3e50 0%, #1a2a3a 100%); /* Sophisticated gradient */
 }
 
-/* Make group titles slightly more distinct */
+.uk-heading-primary {
+    font-weight: 700; /* Bold title */
+    letter-spacing: 0.5px; /* Slight letter spacing for readability */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle text shadow */
+}
+
+/* Search Input Styling */
+#searchInput.uk-input {
+    border-color: #1abc9c; /* Distinct turquoise border */
+    box-shadow: 0 0 0 3px rgba(26,188,156,0.3); /* Subtle glow on focus for better UX */
+    font-size: 1.1em;
+    border-radius: 30px; /* Pill-shaped input */
+    padding: 15px 20px; /* Increased padding */
+}
+
+#searchInput.uk-input:focus {
+    border-color: #1abc9c; /* Maintain border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Group Title Enhancements */
 .uk-heading-medium {
-    font-size: 2em; /* Slightly larger than default medium heading */
+    font-size: 2.2em;
     font-weight: 700;
+    position: relative; /* For pseudo-element positioning */
+    padding-bottom: 15px;
+    margin-bottom: 30px; /* Increased margin below title */
 }
 
-/* Customize the input's focus state */
-.uk-input:focus {
-    border-color: #1abc9c; /* Turquoise for focus */
-    box-shadow: 0 0 0 3px rgba(26,188,156,0.3); /* Subtle glow */
+/* Custom underline for group titles */
+.uk-heading-medium::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px; /* Controlled width of the underline */
+    height: 4px;
+    background-color: #1abc9c; /* Accent color for emphasis */
+    border-radius: 2px; /* Slightly rounded ends */
 }
 
-/* Style the no-results message */
+/* Team Card Enhancements */
+.uk-card-default {
+    border: none; /* Remove default border for a cleaner look */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Softer, larger shadow for depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover transitions */
+}
+
+.uk-card-default:hover {
+    transform: translateY(-6px); /* More pronounced lift effect */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18); /* Stronger hover shadow for more feedback */
+}
+
+.uk-card-title {
+    font-size: 1.5em; /* Larger team names */
+    font-weight: 600;
+    color: #3498db; /* Brighter blue for team names, more inviting */
+    margin-bottom: 15px; /* More space below team name */
+    border-bottom: 1px dashed #bdc3c7; /* Dashed separator for a subtle separation */
+    padding-bottom: 10px;
+}
+
+/* Style for UIkit icons */
+.uk-card-body p .uk-icon {
+    margin-right: 8px; /* Space between icon and text label */
+    color: #95a5a6; /* Muted color for icons, less distracting */
+    vertical-align: middle; /* Align icons nicely with text */
+}
+
+/* Adjust spacing between paragraphs within the card */
+.uk-card-body p {
+    margin-bottom: 10px;
+}
+
+.uk-card-body p:last-child {
+    margin-bottom: 0; /* No bottom margin for the last paragraph */
+}
+
+/* Message for no search results */
 .uk-text-muted.uk-text-italic {
-    color: #7f8c8d !important; /* More muted color */
+    color: #7f8c8d !important; /* Muted color for no results message */
+    font-size: 1.1em;
+}
+
+/* Ensure content within height-matched cards is properly aligned */
+.uk-height-match .uk-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push content to distribute space */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .uk-heading-medium {
+        font-size: 1.8em; /* Slightly smaller titles on tablets */
+    }
+    .uk-card-title {
+        font-size: 1.3em; /* Smaller team names on tablets */
+    }
+    /* Ensure the grid adapts well on smaller screens */
+    .uk-grid.uk-child-width-1-2@m {
+        /* By default UIkit handles this, but good to be aware */
+    }
 }
