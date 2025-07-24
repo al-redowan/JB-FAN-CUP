@@ -3,38 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esports Teams Directory (Vue.js)</title>
+    <title>Esports Teams Directory (UIkit)</title>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.0/dist/css/uikit.min.css" />
+
+    <!-- Link to your custom CSS file (can be minimal or used for overrides) -->
     <link rel="stylesheet" href="style.css">
+
     <!-- Vue.js CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
     <div id="app">
-        <header>
-            <h1>Esports Teams Directory</h1>
-            <input type="text" id="searchInput" v-model="searchQuery" placeholder="Search for a team...">
+        <!-- Header Section -->
+        <header class="uk-section uk-padding-large uk-flex uk-flex-center uk-flex-middle uk-background-primary uk-light uk-box-shadow-large">
+            <div class="uk-container uk-text-center">
+                <h1 class="uk-heading-primary uk-margin-remove">Esports Teams Directory</h1>
+                <input type="text" id="searchInput" v-model="searchQuery" class="uk-input uk-form-width-large uk-margin-top uk-border-pill" placeholder="Search for a team...">
+            </div>
         </header>
-        <main>
-            <!-- Iterate over groups that have matching teams -->
-            <section v-for="(teams, groupName) in filteredGroupsData" :key="groupName" class="group">
-                <h2>☄ GROUP {{ groupName.toUpperCase() }} ☄</h2>
-                <div class="team-list">
-                    <!-- Iterate over teams within the current filtered group -->
-                    <div v-for="(team, index) in teams" :key="index" class="team-card">
-                        <h3>{{ team.name }}</h3>
-                        <p>Email: <span>{{ team.email }}</span></p>
-                        <p>Username: <span>{{ team.username }}</span></p>
+
+        <!-- Main Content Section -->
+        <main class="uk-container uk-margin-large-bottom">
+            <!-- Loop through filtered groups -->
+            <section v-for="(teams, groupName) in filteredGroupsData" :key="groupName" class="uk-margin-medium-bottom">
+                <h2 class="uk-heading-medium uk-text-center uk-margin-medium-bottom uk-text-primary">☄ GROUP {{ groupName.toUpperCase() }} ☄</h2>
+                
+                <!-- UIkit Grid for team cards -->
+                <!-- uk-child-width-1-3@s: 3 columns on small screens and up -->
+                <!-- uk-child-width-1-2@m: 2 columns on medium screens and up -->
+                <!-- uk-grid-small: Adds a small gap between grid items -->
+                <div class="uk-grid uk-child-width-1-3@s uk-child-width-1-2@m uk-grid-small" uk-grid>
+                    <!-- Loop through teams in the current group -->
+                    <div v-for="(team, index) in teams" :key="index">
+                        <!-- UIkit Card Component -->
+                        <div class="uk-card uk-card-default uk-card-hover uk-height-match uk-transition-toggle uk-transform-fast">
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title uk-text-primary uk-margin-small-bottom">{{ team.name }}</h3>
+                                <p class="uk-text-muted uk-margin-small-bottom">Email: <span class="uk-text-dark">{{ team.email }}</span></p>
+                                <p class="uk-text-muted">Username: <span class="uk-text-dark">{{ team.username }}</span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Message displayed if no teams are found across all groups after searching -->
-            <p v-if="Object.keys(filteredGroupsData).length === 0 && searchQuery" class="no-results no-results-overall">
+            <!-- Message for no search results -->
+            <p v-if="Object.keys(filteredGroupsData).length === 0 && searchQuery" class="uk-text-center uk-margin-large-top uk-text-italic uk-text-muted">
                 No teams found matching your search criteria.
             </p>
         </main>
+
+        <!-- UIkit JS -->
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.0/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.0/dist/js/uikit-icons.min.js"></script>
     </div>
 
+    <!-- Your custom JavaScript file -->
     <script src="app.js"></script>
 </body>
 </html>
