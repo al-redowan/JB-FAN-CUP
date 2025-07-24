@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esports Teams Directory (UIkit)</title>
+    <title>Esports Teams Directory (UIkit Advanced)</title>
 
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.0/dist/css/uikit.min.css" />
+    <!-- UIkit Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.0/dist/css/uikit-icons.min.css" />
 
-    <!-- Link to your custom CSS file (can be minimal or used for overrides) -->
+    <!-- Link to your custom CSS file -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Vue.js CDN -->
@@ -31,18 +33,24 @@
                 <h2 class="uk-heading-medium uk-text-center uk-margin-medium-bottom uk-text-primary">☄ GROUP {{ groupName.toUpperCase() }} ☄</h2>
                 
                 <!-- UIkit Grid for team cards -->
-                <!-- uk-child-width-1-3@s: 3 columns on small screens and up -->
-                <!-- uk-child-width-1-2@m: 2 columns on medium screens and up -->
+                <!-- uk-child-width-1-3@s: 3 columns on small screens (>= 640px) -->
+                <!-- uk-child-width-1-2@m: 2 columns on medium screens (>= 960px) -->
                 <!-- uk-grid-small: Adds a small gap between grid items -->
                 <div class="uk-grid uk-child-width-1-3@s uk-child-width-1-2@m uk-grid-small" uk-grid>
                     <!-- Loop through teams in the current group -->
                     <div v-for="(team, index) in teams" :key="index">
-                        <!-- UIkit Card Component -->
+                        <!-- UIkit Card Component with hover and match height -->
                         <div class="uk-card uk-card-default uk-card-hover uk-height-match uk-transition-toggle uk-transform-fast">
                             <div class="uk-card-body">
                                 <h3 class="uk-card-title uk-text-primary uk-margin-small-bottom">{{ team.name }}</h3>
-                                <p class="uk-text-muted uk-margin-small-bottom">Email: <span class="uk-text-dark">{{ team.email }}</span></p>
-                                <p class="uk-text-muted">Username: <span class="uk-text-dark">{{ team.username }}</span></p>
+                                <p class="uk-text-muted uk-margin-small-bottom">
+                                    <span uk-icon="icon: mail; ratio: 0.9;" class="uk-margin-small-right uk-text-muted"></span> <!-- Mail icon -->
+                                    Email: <span class="uk-text-dark">{{ team.email }}</span>
+                                </p>
+                                <p class="uk-text-muted">
+                                    <span uk-icon="icon: user; ratio: 0.9;" class="uk-margin-small-right uk-text-muted"></span> <!-- User icon -->
+                                    Username: <span class="uk-text-dark">{{ team.username }}</span>
+                                </p>
                             </div>
                         </div>
                     </div>
