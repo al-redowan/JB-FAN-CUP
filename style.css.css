@@ -1,4 +1,19 @@
-/* Basic Reset */
+/* --- General Styles --- */
+:root {
+    --primary-dark: #1a2a3a; /* Deep Navy */
+    --primary-medium: #2c3e50; /* Dark Slate Blue */
+    --secondary-accent: #1abc9c; /* Turquoise */
+    --secondary-light: #3498db; /* Bright Blue */
+    --text-color-dark: #2c3e50; /* Darker text for main content */
+    --text-color-light: #ecf0f1; /* Light text for headers */
+    --background-color-light: #f8f9fa; /* Very light gray */
+    --background-color-alt: #e9ecef; /* Slightly darker gray */
+    --card-background: #ffffff;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --hover-shadow-color: rgba(0, 0, 0, 0.15);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,161 +21,195 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f7f6;
-    padding: 20px;
+    font-family: 'Poppins', sans-serif; /* Using a modern font */
+    line-height: 1.7;
+    color: var(--text-color-dark);
+    background-color: var(--background-color-light);
+    padding: 30px 20px; /* Slightly more padding */
 }
 
+/* --- Header Styles --- */
 header {
-    background-color: #2c3e50; /* Dark blue-grey */
-    color: #ecf0f1; /* Light grey */
-    padding: 20px 0;
+    background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-dark) 100%); /* Gradient header */
+    color: var(--text-color-light);
+    padding: 40px 0; /* More generous padding */
     text-align: center;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 40px; /* Increased margin */
+    border-radius: 12px; /* Softer rounded corners */
+    box-shadow: 0 10px 25px var(--shadow-color); /* Stronger shadow */
 }
 
 header h1 {
-    margin-bottom: 15px;
-    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-size: 3em; /* Larger title */
+    font-weight: 700; /* Bolder font */
+    letter-spacing: 0.5px;
 }
 
 #searchInput {
-    width: 80%;
-    max-width: 400px;
-    padding: 12px 15px;
+    width: 85%;
+    max-width: 450px;
+    padding: 15px 20px; /* Larger padding */
     border: none;
-    border-radius: 5px;
-    font-size: 1em;
+    border-radius: 30px; /* Pill shape */
+    font-size: 1.1em;
     outline: none;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+    box-shadow: inset 0 4px 15px var(--shadow-color);
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+    color: var(--text-color-dark);
 }
 
 #searchInput:focus {
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 8px rgba(44, 62, 80, 0.5);
+    box-shadow: 0 0 0 3px var(--secondary-light), inset 0 4px 15px var(--shadow-color); /* Focus indicator */
+    border-color: var(--secondary-light);
 }
 
 #searchInput::placeholder {
-    color: #aaa;
+    color: #9fa8b3; /* Softer placeholder color */
 }
 
+/* --- Group Styles --- */
 .group {
-    background-color: #ffffff;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    padding: 25px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease-in-out;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    margin-bottom: 40px; /* Increased margin */
+    padding: 30px; /* More padding */
+    box-shadow: 0 5px 20px var(--shadow-color); /* Deeper card shadow */
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 }
 
 .group:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px); /* Subtle lift effect */
+    box-shadow: 0 15px 30px var(--hover-shadow-color); /* Enhanced hover shadow */
 }
 
 .group h2 {
-    color: #16a085; /* Teal */
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #eee;
-    font-size: 1.8em;
+    color: var(--secondary-light); /* Accent color for group titles */
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--background-color-alt); /* Thicker separator */
+    font-size: 2.2em; /* Larger group titles */
+    font-weight: 700;
     text-align: center;
 }
 
+/* --- Team List and Card Styles --- */
 .team-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Wider cards */
+    gap: 25px; /* Larger gap between cards */
 }
 
 .team-card {
-    background-color: #fdfdfd;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    padding: 15px 20px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-    transition: box-shadow 0.2s ease-in-out;
+    background-color: #fff; /* White background for cards */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px 25px; /* More padding inside cards */
+    box-shadow: 0 2px 10px var(--shadow-color); /* Card shadow */
+    transition: box-shadow 0.25s ease-in-out, transform 0.25s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Push content to top and bottom if needed */
 }
 
 .team-card:hover {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px var(--hover-shadow-color); /* Enhanced hover effect */
+    transform: translateY(-5px); /* Slight lift on hover */
 }
 
 .team-card h3 {
-    color: #2980b9; /* Blue */
-    margin-bottom: 10px;
-    font-size: 1.3em;
+    color: var(--secondary-accent); /* Accent color for team names */
+    margin-bottom: 12px;
+    font-size: 1.5em; /* Larger team names */
+    font-weight: 600;
     word-break: break-word;
+    border-bottom: 1px dashed var(--border-color); /* Subtle separator */
+    padding-bottom: 8px;
 }
 
 .team-card p {
-    margin-bottom: 5px;
-    font-size: 0.95em;
-    color: #555;
+    margin-bottom: 8px; /* Adjusted spacing for paragraphs */
+    font-size: 1em;
+    color: #444; /* Slightly darker detail text */
 }
 
 .team-card p span {
     font-weight: 500;
-    color: #34495e; /* Darker blue-grey */
-    word-break: break-all; /* Handles long emails/usernames */
+    color: var(--text-color-dark);
+    word-break: break-all;
+    display: block; /* Ensure email/username are on their own line if needed */
+    margin-top: 2px; /* Small space between label and value */
 }
 
-/* Message for no search results */
+/* --- No Results Message --- */
 .no-results {
     text-align: center;
-    color: #777;
-    padding: 20px;
+    color: #6c757d; /* Muted text color */
     font-style: italic;
+    padding: 30px;
+    font-size: 1.1em;
 }
 
 .no-results-overall {
-    grid-column: 1 / -1; /* Ensure it spans across all columns if .team-list is styled with grid */
+    grid-column: 1 / -1; /* Ensure it spans across all columns */
 }
 
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
     header h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
-
-    #searchInput {
-        width: 90%;
-    }
-
     .group h2 {
-        font-size: 1.5em;
+        font-size: 1.8em;
     }
-
     .team-list {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly smaller cards */
     }
+}
 
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px; /* Less padding on smaller screens */
+    }
+    header {
+        padding: 30px 0;
+    }
+    header h1 {
+        font-size: 2.2em;
+    }
+    #searchInput {
+        width: 95%;
+        font-size: 1em;
+    }
+    .group {
+        padding: 20px;
+    }
+    .group h2 {
+        font-size: 1.6em;
+    }
+    .team-list {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+    }
     .team-card {
         padding: 15px;
+    }
+    .team-card h3 {
+        font-size: 1.3em;
     }
 }
 
 @media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
     header h1 {
         font-size: 1.8em;
     }
-
-    .group {
-        padding: 15px;
+    .group h2 {
+        font-size: 1.4em;
     }
-
     .team-card h3 {
-        font-size: 1.1em;
+        font-size: 1.15em;
     }
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
